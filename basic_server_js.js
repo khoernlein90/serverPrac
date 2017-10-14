@@ -5,32 +5,33 @@
 //work with a person next to you and use the context/vocabulary words 
 //to guess at the purpose of each line
 
-//
+
 var http = require("http");
-// 
+
 var PORT = 7000;
 var PORT2 = 7500;
-// 
-function handleRequest(request, response) {
-  // 
-  response.end("You're a good coder.");
+
+
+function handleRequestNice(request, response) {
+    var goodPhrase = ["Nice shoes.", "Nice hat.", "You're good at coding."];
+    response.end("<h1>" + goodPhrase[Math.floor(Math.random() * goodPhrase.length)] + "</h1>");
 }
-// 
-var server = http.createServer(handleRequest);
-// 
+
+var server = http.createServer(handleRequestNice);
+
 server.listen(PORT, function() {
-  //
-  console.log("Server listening on: http://localhost:" + PORT);
+
+    console.log("Server listening on: http://localhost:" + PORT);
 });
-// 
-function handleRequest2(request, response) {
-  // 
-  response.end("You suck at coding.");
+
+function handleRequestMean(request, response) {
+    var badPhrase = ["Ugly shoes.", "Ugly hat.", "You suck at coding."]
+    response.end("<h1>" + badPhrase[Math.floor(Math.random() * badPhrase.length)] + "</h1>");
 }
-// 
-var server2 = http.createServer(handleRequest2);
-// 
+
+var server2 = http.createServer(handleRequestMean);
+
 server2.listen(PORT2, function() {
-  //
-  console.log("Server listening on: http://localhost:" + PORT2);
+
+    console.log("Server listening on: http://localhost:" + PORT2);
 });
